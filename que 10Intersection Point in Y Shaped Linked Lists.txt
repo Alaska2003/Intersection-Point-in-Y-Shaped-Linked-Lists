@@ -1,0 +1,37 @@
+int intersectPoint(Node* head1, Node* head2)
+{
+        int n1=0,n2=0;
+        Node*temp;
+        
+        //finding length of list 1
+        for(temp=head1;temp;temp=temp->next){
+            n1++;
+        }
+        //finding length oflist 2
+        for(temp=head2;temp;temp=temp->next){
+            n2++;
+        }
+        
+        for(;n1>n2;n1--){
+            head1=head1->next;
+        }
+        for(;n2>n1;n2--)
+        head2=head2->next;
+        
+        while(head1!=head2){
+            head1=head1->next;
+            head2=head2->next;
+            
+        }
+        if(head1)
+        return head1->data;
+        return -1;
+        
+} Dry run ke steps:
+
+1. Pehle dono linked lists ke length ko calculate karte hai.
+2. Fir, agar linked list 1 ki length linked list 2 se badi hai, toh linked list 1 ko intersection point tak pahunchane ke liye extra steps lete hai.
+3. Agar linked list 2 ki length linked list 1 se badi hai, toh linked list 2 ko intersection point tak pahunchane ke liye extra steps lete hai.
+4. Ab dono linked lists ko ek saath traverse karte hai jab tak intersection point nahi mil jata.
+5. Jab intersection point mil jata hai, toh uska data return kar dete hai.
+6. Agar intersection point nahi milta hai, toh -1 return karte hai.
